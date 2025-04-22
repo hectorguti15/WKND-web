@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/WKND-web/static/css/main.49a43cf7.css",
+    "main.js": "/WKND-web/static/js/main.f29ab0d4.js",
+    "static/media/heroSection.mp4": "/WKND-web/static/media/heroSection.a50738b529b17a51f078.mp4",
+    "static/media/heroSectionImage.jpg": "/WKND-web/static/media/heroSectionImage.6e7a58199bee426e0194.jpg",
+    "static/media/WKND.png": "/WKND-web/static/media/WKND.912021546aefb8439845.png",
+    "static/media/discoteca2.jpg": "/WKND-web/static/media/discoteca2.eaf9cd58c353728b3895.jpg",
+    "static/media/discoteca1.jpg": "/WKND-web/static/media/discoteca1.07fa6dd442ad26344ec1.jpg",
+    "static/media/discoteca3.jpg": "/WKND-web/static/media/discoteca3.e221201fa264aa7317e8.jpg",
+    "static/media/slick.svg": "/WKND-web/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/WKND-web/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/WKND-web/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/WKND-web/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/WKND-web/index.html",
+    "main.49a43cf7.css.map": "/WKND-web/static/css/main.49a43cf7.css.map",
+    "main.f29ab0d4.js.map": "/WKND-web/static/js/main.f29ab0d4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.49a43cf7.css",
+    "static/js/main.f29ab0d4.js"
+  ]
+}
