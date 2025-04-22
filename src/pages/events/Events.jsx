@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FaMapMarkerAlt, FaCalendarAlt, FaClock, FaMusic, FaArrowRight, FaTicketAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaMapMarkerAlt, FaCalendarAlt, FaClock, FaMusic, FaArrowRight, FaTicketAlt, FaChevronLeft, FaChevronRight, FaMapMarkedAlt, FaCalendarPlus } from "react-icons/fa";
 
 // Placeholder img URLs (idealmente deberías tener imágenes locales en tu proyecto)
 import EventImg1 from "../../assets/images/jpg/discoteca1.jpg";
@@ -219,20 +219,39 @@ export const Events = () => {
                     </div>
                     
                     <div className="flex space-x-3">
-                      <a 
-                        href="#" 
-                        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-${event.color} text-white hover:bg-opacity-90 transition-colors`}
+                      <motion.a 
+                        href="https://www.ticketmaster.com.pe" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-2 text-white hover:text-neon-green transition-colors"
                       >
+                        <span>Comprar entradas</span>
                         <FaTicketAlt />
-                        <span>Comprar</span>
-                      </a>
-                      <a 
-                        href="#" 
-                        className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-white hover:bg-white/20 transition-colors"
+                      </motion.a>
+                      <motion.a 
+                        href="https://maps.google.com/?q=Lima+Peru" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-2 text-white hover:text-neon-pink transition-colors"
                       >
-                        <span>Más info</span>
-                        <FaArrowRight className="text-xs" />
-                      </a>
+                        <span>Ver ubicación</span>
+                        <FaMapMarkedAlt />
+                      </motion.a>
+                      <motion.a 
+                        href="https://calendar.google.com/calendar/u/0/r/eventedit" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-2 text-white hover:text-neon-blue transition-colors"
+                      >
+                        <span>Añadir al calendario</span>
+                        <FaCalendarPlus />
+                      </motion.a>
                     </div>
                   </div>
                 </motion.div>

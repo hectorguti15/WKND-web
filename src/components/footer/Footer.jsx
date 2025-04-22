@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaInstagram, FaTiktok, FaTwitter, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt, FaArrowUp, FaCheck, FaTimes } from 'react-icons/fa';
+import { FaInstagram, FaTiktok, FaTwitter, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt, FaArrowUp, FaCheck, FaTimes, FaFacebook } from 'react-icons/fa';
 import WKND from "../../assets/images/png/WKND.png";
 
 const Footer = () => {
@@ -8,6 +8,8 @@ const Footer = () => {
   const [emailError, setEmailError] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [formState, setFormState] = useState('idle');
+  const [formMessage, setFormMessage] = useState(null);
   
   // Update year automatically
   useEffect(() => {
@@ -150,11 +152,11 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 relative inline-block after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-12 after:h-[2px] after:bg-neon-blue">Enlaces rápidos</h4>
             <ul className="space-y-3">
               {[
-                { href: "/terms", text: "Términos y condiciones", color: "text-neon-pink" },
-                { href: "/privacy", text: "Políticas de privacidad", color: "text-neon-blue" },
-                { href: "/faq", text: "Preguntas frecuentes", color: "text-neon-purple" },
-                { href: "/contact", text: "Contacto", color: "text-neon-green" },
-                { href: "/about", text: "Sobre nosotros", color: "text-neon-pink" }
+                { href: "#terms", text: "Términos y condiciones", color: "text-neon-pink" },
+                { href: "#privacy", text: "Políticas de privacidad", color: "text-neon-blue" },
+                { href: "#faq", text: "Preguntas frecuentes", color: "text-neon-purple" },
+                { href: "#contact", text: "Contacto", color: "text-neon-green" },
+                { href: "#about", text: "Sobre nosotros", color: "text-neon-pink" }
               ].map((link, index) => (
                 <motion.li key={index}
                   initial={{ opacity: 0, x: -10 }}
@@ -179,114 +181,75 @@ const Footer = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            className="w-full md:w-1/3 mt-8 md:mt-0 lg:pl-8 flex flex-col"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <h4 className="text-lg font-bold mb-6 relative inline-block after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-12 after:h-[2px] after:bg-neon-purple">Síguenos</h4>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { href: "https://www.instagram.com", icon: FaInstagram, text: "Instagram", color: "text-neon-pink" },
-                { href: "https://www.tiktok.com", icon: FaTiktok, text: "TikTok", color: "text-neon-blue" },
-                { href: "https://twitter.com", icon: FaTwitter, text: "Twitter", color: "text-neon-purple" },
-                { href: "https://www.youtube.com", icon: FaYoutube, text: "YouTube", color: "text-neon-green" }
-              ].map((social, index) => (
-                <motion.a 
-                  key={index}
-                  href={social.href} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-white/70 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors"
-                  whileHover={{ x: 5, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.5 + (index * 0.1) }}
-                >
-                  <social.icon className={`text-2xl ${social.color}`} /> {social.text}
-                </motion.a>
-              ))}
-            </div>
+            <h2 className="text-2xl font-bold text-white mb-4">Newsletter</h2>
+            <p className="text-white/80 mb-4">Suscríbete para recibir actualizaciones sobre eventos, promociones exclusivas y más.</p>
             
-            <motion.div 
-              className="mt-8"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.9 }}
-            >
-              <h5 className="text-sm font-medium mb-3">Suscríbete a nuestro newsletter</h5>
-              <form onSubmit={handleSubscribe} className="flex flex-col">
-                <div className="flex">
-                  <input 
-                    type="email" 
-                    placeholder="Tu email" 
-                    className={`bg-black/30 border ${
-                      emailError ? 'border-red-500' : 'border-white/10'
-                    } rounded-l-lg px-4 py-2 text-white focus:outline-none focus:border-neon-pink transition-colors w-full`}
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      if (emailError) setEmailError('');
-                    }}
-                    disabled={subscribed}
-                  />
-                  <motion.button 
-                    type="submit"
-                    className="bg-gradient-to-r from-neon-pink to-neon-purple hover:from-neon-pink/90 hover:to-neon-purple/90 px-4 rounded-r-lg text-white overflow-hidden"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    disabled={subscribed}
-                  >
-                    <AnimatePresence mode="wait">
-                      {subscribed ? (
-                        <motion.div
-                          key="success"
-                          initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: -20, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <FaCheck />
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key="submit"
-                          initial={{ y: -20, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: 20, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <FaEnvelope />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.button>
-                </div>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              const email = e.target.email.value;
+              if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+                setFormMessage({ type: 'error', text: 'Por favor ingresa un email válido' });
+                return;
+              }
+              
+              // Simulate submission
+              setFormState('submitting');
+              setTimeout(() => {
+                setFormState('success');
+                setFormMessage({ type: 'success', text: '¡Gracias por suscribirte!' });
+                e.target.reset();
                 
-                <AnimatePresence>
-                  {emailError && (
-                    <motion.p
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="text-red-500 text-sm mt-1 flex items-center"
-                    >
-                      <FaTimes className="mr-1" /> {emailError}
-                    </motion.p>
-                  )}
-                  
-                  {subscribed && (
-                    <motion.p
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="text-green-500 text-sm mt-1 flex items-center"
-                    >
-                      <FaCheck className="mr-1" /> ¡Gracias por suscribirte!
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-              </form>
-            </motion.div>
+                // Reset after 3 seconds
+                setTimeout(() => {
+                  setFormState('idle');
+                  setFormMessage(null);
+                }, 3000);
+              }, 1000);
+            }} className="relative">
+              <input
+                type="email"
+                name="email"
+                placeholder="Tu email"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 text-white border border-white/20 focus:border-neon-purple focus:outline-none focus:ring-2 focus:ring-neon-purple/30 transition-all"
+                disabled={formState === 'submitting'}
+              />
+              <motion.button
+                type="submit"
+                className={`mt-3 px-6 py-3 rounded-lg font-medium transition-all ${
+                  formState === 'submitting' ? 'bg-white/20 text-white/50' : 'bg-neon-pink text-white hover:bg-neon-pink-dark'
+                }`}
+                whileHover={formState !== 'submitting' ? { scale: 1.02 } : {}}
+                whileTap={formState !== 'submitting' ? { scale: 0.98 } : {}}
+                disabled={formState === 'submitting'}
+              >
+                {formState === 'submitting' ? 'Enviando...' : 'Suscribirse'}
+              </motion.button>
+              
+              <AnimatePresence>
+                {formMessage && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className={`mt-3 p-2 rounded-md flex items-center text-sm ${
+                      formMessage.type === 'error' ? 'bg-red-500/20 text-red-200' : 'bg-green-500/20 text-green-200'
+                    }`}
+                  >
+                    {formMessage.type === 'error' ? (
+                      <FaTimes className="mr-2" />
+                    ) : (
+                      <FaCheck className="mr-2" />
+                    )}
+                    {formMessage.text}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </form>
           </motion.div>
         </div>
         

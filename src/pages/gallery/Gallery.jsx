@@ -139,7 +139,7 @@ export const Gallery = () => {
             <h3 className="text-xl font-medium">Sube tus fotos con #ModoWKND y sé parte de nuestra galería</h3>
           </div>
           
-          <a href="#" className="inline-flex items-center gap-2 text-white hover:text-neon-purple transition-colors mt-4">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white hover:text-neon-purple transition-colors mt-4">
             <span>Ver más en Instagram</span>
             <FaArrowRight className="text-sm" />
           </a>

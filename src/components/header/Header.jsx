@@ -13,8 +13,23 @@ export const Header = () => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Primero cerramos el menú móvil
       setIsMenuOpen(false);
+      
+      // Pequeño retraso para que se cierre el menú antes de desplazarse
+      setTimeout(() => {
+        // Obtener la posición del elemento
+        const rect = element.getBoundingClientRect();
+        // Calcular la posición de desplazamiento
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const elementTop = rect.top + scrollTop;
+        
+        // Desplazamiento con una compensación para el header fijo
+        window.scrollTo({
+          top: elementTop - 80, // Ajusta este valor según la altura de tu header
+          behavior: 'smooth'
+        });
+      }, 100);
     }
   };
 
@@ -44,6 +59,9 @@ export const Header = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
+    // Ejecutar una vez al inicio para establecer la sección activa
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -61,6 +79,17 @@ export const Header = () => {
     { id: 'ruta', icon: <FaMap />, text: 'Ruta', color: 'text-blue-300' },
     { id: 'registro', icon: <FaUserPlus />, text: 'Registro', color: 'text-pink-300' },
   ];
+
+  // Función para manejar clic en opciones del menú móvil
+  const handleMobileNavClick = (id) => {
+    // Cerrar el menú móvil
+    setIsMenuOpen(false);
+    
+    // Pequeño retraso para permitir que el menú se cierre
+    setTimeout(() => {
+      scrollToSection(id);
+    }, 150);
+  };
 
   return (
     <header className={`sticky top-0 z-50 backdrop-blur-md bg-dark-bg/80 ${scrolled ? 'border-b border-white/10 shadow-lg' : ''} transition-all duration-300`}>
@@ -239,7 +268,7 @@ export const Header = () => {
                 {navItems.map((item) => (
                   <motion.button 
                     key={item.id}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => handleMobileNavClick(item.id)}
                     className={`flex items-center gap-2 p-2 rounded-md text-sm hover:bg-white/10 text-white/80 hover:text-white ${
                       activeSection === item.id ? 'font-medium bg-white/10 text-white' : ''
                     }`}
@@ -247,6 +276,7 @@ export const Header = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.2, delay: navItems.indexOf(item) * 0.05 }}
                     whileHover={{ x: 4 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     <span className={`text-lg ${item.color}`}>{item.icon}</span> {item.text}
                     
@@ -263,7 +293,7 @@ export const Header = () => {
                 {/* Mobile CTA Button */}
                 <motion.button 
                   className="relative flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500/90 to-blue-500/90 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-3 px-4 rounded-lg w-full mt-4 shadow-sm transition-all duration-300 overflow-hidden"
-                  onClick={() => scrollToSection('registro')}
+                  onClick={() => handleMobileNavClick('registro')}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
