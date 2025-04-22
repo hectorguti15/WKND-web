@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/WKND-web/static/css/main.49a43cf7.css",
-    "main.js": "/WKND-web/static/js/main.f29ab0d4.js",
+    "main.css": "/WKND-web/static/css/main.04de59c2.css",
+    "main.js": "/WKND-web/static/js/main.60bf162a.js",
     "static/media/heroSection.mp4": "/WKND-web/static/media/heroSection.a50738b529b17a51f078.mp4",
     "static/media/heroSectionImage.jpg": "/WKND-web/static/media/heroSectionImage.6e7a58199bee426e0194.jpg",
     "static/media/WKND.png": "/WKND-web/static/media/WKND.912021546aefb8439845.png",
@@ -13,11 +13,11 @@
     "static/media/slick.ttf": "/WKND-web/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/WKND-web/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/WKND-web/index.html",
-    "main.49a43cf7.css.map": "/WKND-web/static/css/main.49a43cf7.css.map",
-    "main.f29ab0d4.js.map": "/WKND-web/static/js/main.f29ab0d4.js.map"
+    "main.04de59c2.css.map": "/WKND-web/static/css/main.04de59c2.css.map",
+    "main.60bf162a.js.map": "/WKND-web/static/js/main.60bf162a.js.map"
   },
   "entrypoints": [
-    "static/css/main.49a43cf7.css",
-    "static/js/main.f29ab0d4.js"
+    "static/css/main.04de59c2.css",
+    "static/js/main.60bf162a.js"
   ]
 }
